@@ -435,10 +435,12 @@ class Note(Gtk.Window):
             if self.is_stuck:
                 label = _("Only on This Workspace")
                 def on_activate(*args):
+                    self.is_stuck = False
                     self.unstick()
             else:
                 label = _("Always on Visible Workspace")
                 def on_activate(*args):
+                    self.is_stuck = True
                     self.stick()
 
             stick_menu_item = Gtk.MenuItem(label=label, visible=True)
